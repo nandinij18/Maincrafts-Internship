@@ -1,0 +1,370 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --space-black: #0B0F19;
+    --mars-orange: #FF6B35;
+    --deep-red: #E63946;
+    --soft-white: #F1FAEE;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--space-black);
+    color: var(--soft-white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- BACKGROUND STARFIELD --- */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+/* --- LAYOUT COMPONENTS --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+}
+
+/* --- HEADER & NAV --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding-top: 1.5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--soft-white);
+}
+
+.accent {
+    color: var(--mars-orange);
+}
+
+.mars-dot {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--mars-orange), var(--deep-red));
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--soft-white);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--mars-orange);
+}
+
+.enroll-btn {
+    background: var(--mars-orange);
+    color: var(--space-black);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.enroll-btn:hover {
+    background: white;
+    box-shadow: 0 0 20px var(--mars-orange);
+}
+
+/* --- HERO SECTION --- */
+#home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    z-index: 10;
+    animation: float 6s ease-in-out infinite;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--mars-orange), var(--deep-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-p {
+    font-size: 1.25rem;
+    color: rgba(241, 250, 238, 0.7);
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.primary-btn {
+    background: linear-gradient(to right, var(--mars-orange), var(--deep-red));
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.secondary-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+}
+
+.mars-bg {
+    position: absolute;
+    bottom: -300px;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle at center, var(--mars-orange) 0%, var(--deep-red) 50%, transparent 80%);
+    border-radius: 50%;
+    opacity: 0.2;
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+/* --- MISSION CARDS --- */
+#mission {
+    padding: 6rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.line {
+    width: 80px;
+    height: 4px;
+    background: var(--mars-orange);
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    transition: all 0.4s;
+}
+
+.card:hover {
+    border-color: var(--mars-orange);
+    transform: scale(1.03);
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 107, 53, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.card h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: rgba(241, 250, 238, 0.6);
+}
+
+/* --- STATS SECTION --- */
+#colony {
+    padding: 4rem 0;
+}
+
+.stats-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    padding: 4rem;
+    border-radius: 2.5rem;
+    text-align: center;
+}
+
+.stat-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--mars-orange);
+    margin-bottom: 0.5rem;
+}
+
+.stat-number.white {
+    color: var(--soft-white);
+}
+
+.stat-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: rgba(241, 250, 238, 0.5);
+    font-weight: bold;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 4rem 0 2rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 4rem;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: rgba(241, 250, 238, 0.4);
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--mars-orange);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.7rem;
+    color: rgba(241, 250, 238, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .btn-group { flex-direction: column; }
+    h1 { font-size: 2.5rem; }
+    .stats-banner { padding: 2rem; }
+}
